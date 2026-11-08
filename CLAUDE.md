@@ -8,7 +8,7 @@
 ## Constraints
 - **Cost:** £0 for hosting, APIs, libraries and subscriptions. Bitrise Remote Development Environments (RDE) cost Jeremy nothing personally, so they are allowed.
 - **Architecture:** always choose the simplest architecture that meets the requirements. The web app is static files only, with no backend and no build step.
-- **Hosting:** GitHub Pages (free for public repositories).
+- **Hosting:** GitHub Pages (free for public repositories), serving `main` from the repository root at https://r0yalblue.github.io/earth-distance-game/. Every merge to `main` goes live.
 - **Source control:** public repository `r0yalblue/earth-distance-game`. Run `gh auth switch --user r0yalblue` before any `gh` command. Commits use the repository-local noreply email, not Jeremy's work email.
 - **Libraries:** pin exact versions when loading from a CDN.
 
@@ -27,6 +27,8 @@
 - The web app is developed locally on Jeremy's Mac.
 - Serve it with `python3 -m http.server 8000 --bind 127.0.0.1` and open http://127.0.0.1:8000. Opening `index.html` from disk does not work (ES modules and WebGL textures are blocked on `file://`). Always bind to 127.0.0.1; Claude's auto mode blocks servers exposed to the network.
 - Work happens on a feature branch per phase, merged to `main` through a pull request that Jeremy reviews.
+- Run `npm test` (Node built-in test runner, no dependencies) before committing. GitHub Actions runs the same tests on every PR; do not merge with failing checks.
+- Keep game logic in pure modules (`js/geo.js`, `js/scoring.js`, `js/game.js`) with tests in `tests/`.
 - The Android phase moves to a Bitrise RDE, so Jeremy learns that workflow. This file and the product brief are committed so the context travels with the code.
 - The Android approach (Capacitor wrapper or native Kotlin rewrite) is undecided until the web app is live.
 
@@ -39,5 +41,5 @@
 1. Repository setup (README, `.gitignore`, this file, product brief). Done.
 2. Restructure into separate files; add the Measure/Play mode picker; keep a copy of the globe textures in the repository. Done.
 3. Build Play mode (capitals, scoring, copy result); switch distance to Vincenty. Done.
-4. Unit tests for distance and scoring (Node built-in test runner); deploy to GitHub Pages.
+4. Unit tests for distance and scoring (Node built-in test runner); GitHub Actions; deploy to GitHub Pages. Done.
 5. Android app and Google Play Store listing (in a Bitrise RDE).

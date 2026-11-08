@@ -32,7 +32,7 @@ A globe-based web game with two choices on launch: **Measure** or **Play**.
 | Measure | Search two cities (Open-Meteo), see the arc and distance | Built |
 | Play | 3 capital rounds, score = 100 × (1 − \|error\| ÷ actual), floored at 0 | Built |
 | Click-to-drop pins | Click the globe to set points | Rejected (adds UX complexity) |
-| Hosting | Static site on GitHub Pages | Selected |
+| Hosting | Static site on GitHub Pages (https://r0yalblue.github.io/earth-distance-game/) | Live |
 | Android: Capacitor wrapper | Package the web code as a Play Store app | Under consideration |
 | Android: native Kotlin rewrite | Rebuild natively with Jetpack Compose | Under consideration |
 

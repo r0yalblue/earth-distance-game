@@ -5,6 +5,8 @@ A globe-based web game about distances between places on Earth.
 - **Measure:** search for two cities and see the distance and arc on a 3D globe.
 - **Play:** guess the distance in km between two national capitals over 3 rounds, scored out of 300, then copy your result to share.
 
+**Play it:** https://r0yalblue.github.io/earth-distance-game/
+
 This is a personal learning project for building a game with AI agents and shipping it to the web and, later, the Google Play Store. See [docs/product_brief.md](docs/product_brief.md) for the goals and scope.
 
 ## Running it
@@ -18,6 +20,18 @@ python3 -m http.server 8000 --bind 127.0.0.1
 Then open http://127.0.0.1:8000. No build step is needed. `--bind 127.0.0.1` keeps the server private to your machine.
 
 City search in Measure uses the free [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api), so an internet connection is required. Play uses bundled data only.
+
+## Tests
+
+```bash
+npm test
+```
+
+Uses Node's built-in test runner (Node 22 or later), so there is nothing to install. The same tests run automatically on GitHub for every pull request.
+
+## Hosting
+
+GitHub Pages serves the `main` branch from the repository root. Every merge to `main` is live within a minute or two.
 
 ## Project structure
 
@@ -34,6 +48,10 @@ City search in Measure uses the free [Open-Meteo Geocoding API](https://open-met
 | `js/play.js` | Play mode: rounds, reveal and final score |
 | `data/capitals.json` | 193 UN member state capitals with coordinates |
 | `scripts/build-capitals.mjs` | Rebuilds `data/capitals.json` (`node scripts/build-capitals.mjs`) |
+| `tests/` | Unit tests for distance, scoring and game rules |
+| `package.json` | Test command only; there are no dependencies |
+| `.github/workflows/test.yml` | Runs the tests on GitHub for every PR and push to `main` |
+| `.nojekyll` | Tells GitHub Pages to serve the files as they are |
 | `assets/` | Globe and background textures (from three-globe's examples; NASA Blue Marble imagery) |
 | `docs/` | Product brief |
 
@@ -46,4 +64,4 @@ City search in Measure uses the free [Open-Meteo Geocoding API](https://open-met
 
 ## Status
 
-Measure and Play work locally. Next: unit tests and hosting on GitHub Pages.
+Live on GitHub Pages. Next: the Android app and a Google Play Store listing.
