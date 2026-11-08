@@ -9,8 +9,9 @@
 - **Cost:** £0 for hosting, APIs, libraries and subscriptions. Bitrise Remote Development Environments (RDE) cost Jeremy nothing personally, so they are allowed.
 - **Architecture:** always choose the simplest architecture that meets the requirements. The web app is static files only, with no backend and no build step.
 - **Hosting:** GitHub Pages (free for public repositories), serving `main` from the repository root at https://r0yalblue.github.io/earth-distance-game/. Every merge to `main` goes live.
-- **Source control:** public repository `r0yalblue/earth-distance-game`. Run `gh auth switch --user r0yalblue` before any `gh` command. Commits use the repository-local noreply email, not Jeremy's work email.
-- **Libraries:** pin exact versions when loading from a CDN.
+- **Source control:** public repository `r0yalblue/earth-distance-game`. Run `gh auth switch --user r0yalblue` before any `gh` command. Commits use the noreply identity `Jeremy Palmer <54328869+r0yalblue@users.noreply.github.com>`, set in the repository's local git config, never Jeremy's work email. In a fresh clone (for example in an RDE), set it with `git config user.name` and `git config user.email` before the first commit.
+- **Branch protection on `main`:** every change goes through a pull request (no approvals needed, since Jeremy cannot approve his own PRs), the `test` check must pass, the rule applies to admins, and force pushes and deletion are blocked.
+- **Libraries:** pin exact versions when loading from a CDN. The globe.gl `<script>` tag has a Subresource Integrity (`integrity`) hash; when upgrading globe.gl, recompute it (SHA-384 of the exact file, checked against the npm package) or the globe will not load.
 
 ## Product decisions (as of 08/11/2026)
 - Two modes, chosen on launch:
@@ -30,7 +31,8 @@
 - Run `npm test` (Node built-in test runner, no dependencies) before committing. GitHub Actions runs the same tests on every PR; do not merge with failing checks.
 - Keep game logic in pure modules (`js/geo.js`, `js/scoring.js`, `js/game.js`) with tests in `tests/`.
 - The Android phase moves to a Bitrise RDE, so Jeremy learns that workflow. This file and the product brief are committed so the context travels with the code.
-- The Android approach (Capacitor wrapper or native Kotlin rewrite) is undecided until the web app is live.
+- The web app went live on 08/11/2026. The Android approach (Capacitor wrapper or native Kotlin rewrite) is the first decision of Phase 5: present the trade-offs and a plan to Jeremy before building.
+- Known issue, deliberately deferred: on phones the card can cover the top end of north-south arcs (camera framing).
 
 ## Working with Jeremy
 - Plan before implementing, and get Jeremy's approval on the approach.
@@ -42,4 +44,6 @@
 2. Restructure into separate files; add the Measure/Play mode picker; keep a copy of the globe textures in the repository. Done.
 3. Build Play mode (capitals, scoring, copy result); switch distance to Vincenty. Done.
 4. Unit tests for distance and scoring (Node built-in test runner); GitHub Actions; deploy to GitHub Pages. Done.
-5. Android app and Google Play Store listing (in a Bitrise RDE).
+5. Android app and Google Play Store listing (in a Bitrise RDE). Next.
+
+Other possible improvements (zoom detail, other worlds) are listed in the product brief; none is chosen yet.
