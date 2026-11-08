@@ -75,7 +75,10 @@
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.34.4/dist/globe.gl.min.js"></script>
+<!-- integrity: the browser refuses to run the file if its SHA-384 hash differs (re-compute when upgrading globe.gl). -->
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.34.4/dist/globe.gl.min.js"
+        integrity="sha384-boR1tzK+m2z3pM2fQMq+PoYI0pIQmU+zWj+z3Oy5czzi97itGHXoL/YTj4ypMFbq"
+        crossorigin="anonymous"></script>
 <script type="module" src="js/main.js"></script>
 </body>
 </html>
