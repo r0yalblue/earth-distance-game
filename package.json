@@ -1,0 +1,9 @@
+{
+  "name": "earth-distance-game",
+  "private": true,
+  "description": "Globe-based game about distances between places on Earth",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
