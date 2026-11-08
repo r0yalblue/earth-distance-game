@@ -29,7 +29,7 @@ A globe-based web game with two choices on launch: **Measure** or **Play**.
 
 | Phase / Option | Solution description | Status |
 |---|---|---|
-| Measure | Search two cities (Open-Meteo), see the arc and distance | Built (needs pins removed) |
+| Measure | Search two cities (Open-Meteo), see the arc and distance | Built |
 | Play | 3 capital rounds, score = 100 × (1 − \|error\| ÷ actual), floored at 0 | Selected, next |
 | Click-to-drop pins | Click the globe to set points | Rejected (adds UX complexity) |
 | Hosting | Static site on GitHub Pages | Selected |
