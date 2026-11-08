@@ -38,6 +38,14 @@ A globe-based web game with two choices on launch: **Measure** or **Play**.
 
 The Android approach is deliberately unresolved until the web game is live.
 
+**Possible next improvements** (none chosen yet)
+
+| Improvement | What it involves | Main trade-off |
+|---|---|---|
+| 1. Android app | Capacitor wrapper or native Kotlin rewrite, published to the Play Store, built in a Bitrise RDE | Delivers the secondary metric; Kotlin teaches more but means rewriting the game |
+| 2. Zoom detail | Upgrade Globe.gl from 2.34.4 to 2.35.0 or later and use its tile engine (`globeTileEngineUrl`) so the surface sharpens as players zoom; NASA GIBS imagery is free and public domain | Imagery must have no place-name labels (they would reveal the capitals in Play); more data use; does not work offline |
+| 3. Other worlds | Same Globe.gl code with a Moon or Mars texture (NASA, USGS); features such as craters and landing sites from the USGS Gazetteer of Planetary Nomenclature replace capitals | `js/geo.js` needs each world's radius or ellipsoid as a parameter; gas giants have no fixed surface features, so they cannot be played |
+
 **Risks**
 - **CDN or texture links break:** hot-linked images and libraries could change. Keep a copy of the textures in the repo and pin library versions.
 - **Open-Meteo goes away or limits usage:** only Measure depends on it. Play uses bundled data.
@@ -54,6 +62,8 @@ The Android approach is deliberately unresolved until the web game is live.
 | Bundled capitals data (193 UN members) | Monetisation, ads, analytics | Miles option in Play |
 | GitHub repo (`r0yalblue`) and GitHub Pages | Paid APIs or hosting | Difficulty levels (e.g. same continent) |
 | Unit tests for distance and scoring | Real-time multiplayer | Personal best stored on the device |
+| | Map styles with place-name labels | Zoom detail (tiled imagery) |
+| | Gas giants as playable worlds | Other worlds (Moon, Mars) |
 
 ## ✅ Requirements
 - **Cost:** £0 for hosting, APIs and libraries.
@@ -67,6 +77,7 @@ The Android approach is deliberately unresolved until the web game is live.
 | Question | Owner | Target date |
 |---|---|---|
 | Android approach: Capacitor wrapper or native Kotlin? | Jeremy | When web launch is complete |
+| Which improvement comes next: Android app, zoom detail or other worlds? | Jeremy | Not set |
 
 Resolved on 08/11/2026: pairs closer than 300 km are excluded; only the 193 UN member states are included (no observers or partially recognised states).
 
@@ -88,3 +99,6 @@ Resolved on 08/11/2026: pairs closer than 300 km are excluded; only the 193 UN m
 - Globe.gl: https://globe.gl
 - Open-Meteo Geocoding API: https://open-meteo.com/en/docs/geocoding-api
 - GitHub Pages: https://pages.github.com
+- NASA GIBS (tiled Earth imagery): https://www.earthdata.nasa.gov/engage/open-data-services-software/earthdata-developer-portal/gibs-api
+- USGS Gazetteer of Planetary Nomenclature: https://planetarynames.wr.usgs.gov
+- NASA SVS CGI Moon Kit: https://svs.gsfc.nasa.gov/4720
