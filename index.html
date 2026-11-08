@@ -14,8 +14,8 @@
   <div class="panel">
     <h1 class="home-title">Earth Distance</h1>
     <p class="home-tagline">How far apart are places on Earth?</p>
+    <a href="#play" class="btn mode-btn featured"><strong>Play</strong><span>Guess the distance between capitals</span></a>
     <a href="#measure" class="btn mode-btn"><strong>Measure</strong><span>Find the distance between two cities</span></a>
-    <a href="#play" class="btn mode-btn primary"><strong>Play</strong><span>Guess the distance between capitals</span></a>
   </div>
 </section>
 
@@ -40,13 +40,37 @@
   </div>
 </section>
 
-<!-- Play: capitals game (Phase 3) -->
+<!-- Play: guess the distance between two capitals, three rounds -->
 <section id="play" class="screen" hidden>
   <div class="panel">
     <a href="#" class="btn back">← Back</a>
-    <div class="card">
-      <h2>Coming soon</h2>
-      <p>Guess the distance between two capital cities over three rounds.</p>
+
+    <div class="card play-question">
+      <p class="play-round"></p>
+      <h2 class="play-prompt"></h2>
+      <form class="play-form">
+        <input class="play-input" type="number" inputmode="numeric" min="1" step="any" placeholder="Distance in km" aria-label="Your guess in km" required>
+        <button class="btn primary" type="submit">Guess</button>
+      </form>
+    </div>
+
+    <div class="card play-reveal" hidden>
+      <p class="play-round"></p>
+      <p class="play-pair"></p>
+      <p class="play-points"></p>
+      <p class="play-detail"></p>
+      <button class="btn primary play-next" type="button"></button>
+    </div>
+
+    <div class="card play-summary" hidden>
+      <p class="play-round">Final score</p>
+      <p class="play-total"></p>
+      <ol class="play-lines"></ol>
+      <div class="row">
+        <button class="btn primary play-copy" type="button">Copy result</button>
+        <button class="btn play-again" type="button">Play again</button>
+      </div>
+      <p class="play-copied" aria-live="polite"></p>
     </div>
   </div>
 </section>

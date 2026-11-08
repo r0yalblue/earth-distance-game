@@ -1,6 +1,6 @@
 // Measure mode: search two cities and show the distance between them.
 
-import { haversineKm, kmToMiles, formatNumber } from './geo.js';
+import { distanceKm, kmToMiles, formatNumber } from './geo.js';
 
 const GEOCODER = 'https://geocoding-api.open-meteo.com/v1/search';
 const DEBOUNCE_MS = 300;
@@ -24,7 +24,7 @@ export function createMeasure(root, globe) {
   function render() {
     const [a, b] = slots;
     if (a && b) {
-      const km = haversineKm(a, b);
+      const km = distanceKm(a, b);
       globe.showRoute(a, b, km);
       distEl.textContent = `${formatNumber(km)} km`;
       subEl.textContent = `${formatNumber(kmToMiles(km))} miles · ${a.name} to ${b.name}`;

@@ -11,7 +11,9 @@ export function createGlobe(container) {
     .backgroundImageUrl('assets/night-sky.png')
     .pointColor(() => ACCENT).pointAltitude(0.02).pointRadius(0.6)
     .pointLabel(p => p.name)
-    .arcColor(() => ['#ffd166', ACCENT]).arcStroke(0.6).arcAltitudeAutoScale(0.4)
+    // Altitude 0 draws the arc flush with the surface along the great circle,
+    // so the line on screen is the route the distance is measured along.
+    .arcColor(() => ['#ffd166', ACCENT]).arcStroke(0.6).arcAltitude(0)
     .width(innerWidth).height(innerHeight);
 
   addEventListener('resize', () => globe.width(innerWidth).height(innerHeight));

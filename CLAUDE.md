@@ -19,8 +19,9 @@
 - Click-to-drop pins on the globe have been removed as unnecessary UX complexity.
 - **Scoring:** points per round = 100 × (1 − |guess − actual| ÷ actual), never below 0. A game totals 300. Jeremy may fine-tune the curve later.
 - **Sharing:** a "Copy result" button produces text to paste into a chat. No accounts, no leaderboard, no backend.
-- **Capitals data:** bundled as a static JSON file, with no API calls in Play mode.
-- **Distance:** haversine great-circle distance, rounded to the nearest km.
+- **Capitals data:** `data/capitals.json`, the 193 UN member states only (no observers such as Vatican City or Palestine, no partially recognised states). Generated once by `node scripts/build-capitals.mjs` from mledoze/countries (names, UN membership) and Natural Earth (coordinates); the app never calls an API in Play mode. Manual corrections live in that script.
+- **Pairs:** 3 per game, each at least 300 km apart, with no capital used twice in a game.
+- **Distance:** Vincenty's formula on the WGS-84 ellipsoid (`distanceKm` in `js/geo.js`), falling back to haversine for nearly antipodal points. Rounded to the nearest km for display; scores use the unrounded value.
 
 ## Development environment
 - The web app is developed locally on Jeremy's Mac.
@@ -37,6 +38,6 @@
 ## Roadmap
 1. Repository setup (README, `.gitignore`, this file, product brief). Done.
 2. Restructure into separate files; add the Measure/Play mode picker; keep a copy of the globe textures in the repository. Done.
-3. Build Play mode (capitals, scoring, copy result).
+3. Build Play mode (capitals, scoring, copy result); switch distance to Vincenty. Done.
 4. Unit tests for distance and scoring (Node built-in test runner); deploy to GitHub Pages.
 5. Android app and Google Play Store listing (in a Bitrise RDE).
