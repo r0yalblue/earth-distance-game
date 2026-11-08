@@ -73,7 +73,9 @@ body {
 }
 .mode-btn strong { display: block; font-size: 20px; }
 .mode-btn span { color: var(--muted); font-size: 14px; }
-.mode-btn.primary { border-color: var(--accent); }
+/* Highlighted mode (Play): orange outline and title, neutral background */
+.mode-btn.featured { border: 1.5px solid var(--accent); }
+.mode-btn.featured strong { color: var(--accent); }
 
 /* Measure */
 .field { position: relative; }
