@@ -30,7 +30,7 @@ A globe-based web game with two choices on launch: **Measure** or **Play**.
 | Phase / Option | Solution description | Status |
 |---|---|---|
 | Measure | Search two cities (Open-Meteo), see the arc and distance | Built |
-| Play | 3 capital rounds, score = 100 × (1 − \|error\| ÷ actual), floored at 0 | Selected, next |
+| Play | 3 capital rounds, score = 100 × (1 − \|error\| ÷ actual), floored at 0 | Built |
 | Click-to-drop pins | Click the globe to set points | Rejected (adds UX complexity) |
 | Hosting | Static site on GitHub Pages | Selected |
 | Android: Capacitor wrapper | Package the web code as a Play Store app | Under consideration |
@@ -51,7 +51,7 @@ The Android approach is deliberately unresolved until the web game is live.
 | Launch choice: Measure or Play | Click-to-drop pins | Android app and Play Store listing |
 | Play: 3 rounds, score out of 300 | Accounts or logins | Scoring curve tuning |
 | Copy-to-clipboard result text | Online leaderboard or backend | Daily challenge (same pairs for everyone) |
-| Bundled capitals data (~195) | Monetisation, ads, analytics | Miles option in Play |
+| Bundled capitals data (193 UN members) | Monetisation, ads, analytics | Miles option in Play |
 | GitHub repo (`r0yalblue`) and GitHub Pages | Paid APIs or hosting | Difficulty levels (e.g. same continent) |
 | Unit tests for distance and scoring | Real-time multiplayer | Personal best stored on the device |
 
@@ -60,15 +60,15 @@ The Android approach is deliberately unresolved until the web game is live.
 - **Platform:** works in current mobile and desktop browsers, usable one-handed on a phone.
 - **Architecture:** static files only, with no backend and no build step.
 - **Source control:** public repo `earth-distance-game` under GitHub account `r0yalblue`.
-- **Accuracy:** great-circle distance (haversine), rounded to the nearest km.
+- **Accuracy:** ellipsoidal distance on WGS-84 (Vincenty's formula), rounded to the nearest km.
 
 ## ❓ Open Questions
 
 | Question | Owner | Target date |
 |---|---|---|
 | Android approach: Capacitor wrapper or native Kotlin? | Jeremy | When web launch is complete |
-| Should very close capital pairs be excluded (e.g. Rome and Vatican City), and below what distance? | Jeremy | 15/11/2026 |
-| Should disputed or partially recognised capitals be included? | Jeremy | 15/11/2026 |
+
+Resolved on 08/11/2026: pairs closer than 300 km are excluded; only the 193 UN member states are included (no observers or partially recognised states).
 
 ## 📈 Competitor analysis
 
@@ -78,7 +78,7 @@ The Android approach is deliberately unresolved until the web game is live.
 | Worldle | Identifying a country from its shape | Shows distance as a hint, not as the challenge | Free |
 | Globle | Finding a mystery country on a globe | Proximity colours as a hint | Free |
 | Google Earth "measure distance" | Nothing (a tool, not a game) | Yes, but no challenge or scoring | Free |
-| **Earth Distance Game (today)** | Measuring distances between cities | Not yet; Play adds it | Free |
+| **Earth Distance Game (today)** | Measuring distances, guessing distances between capitals | Yes, the core of Play | Free |
 
 **Verdict:** no popular free game makes distance estimation itself the challenge, which leaves a small but clear niche for a game played with friends.
 
