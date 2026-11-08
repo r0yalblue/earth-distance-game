@@ -9,9 +9,29 @@ This is a personal learning project for building a game with AI agents and shipp
 
 ## Running it
 
-Open `globe-distance-cities.html` in a browser. No build step or server is needed.
+The app must be served over HTTP, because browsers block JavaScript modules and WebGL textures on pages opened straight from disk (`file://`). From the project folder:
+
+```bash
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Then open http://127.0.0.1:8000. No build step is needed. `--bind 127.0.0.1` keeps the server private to your machine.
 
 City search uses the free [Open-Meteo Geocoding API](https://open-meteo.com/en/docs/geocoding-api), so an internet connection is required.
+
+## Project structure
+
+| Path | Purpose |
+|---|---|
+| `index.html` | Page shell and the three screens (start, Measure, Play) |
+| `css/styles.css` | Styling |
+| `js/main.js` | Entry point; switches screens based on the URL hash (`#measure`, `#play`) |
+| `js/globe.js` | Globe.gl setup and a small API for markers, arcs and camera |
+| `js/geo.js` | Pure maths (haversine distance, midpoint, formatting) |
+| `js/measure.js` | Measure mode: city search and result |
+| `js/play.js` | Play mode (placeholder until the capitals game is built) |
+| `assets/` | Globe and background textures (from three-globe's examples; NASA Blue Marble imagery) |
+| `docs/` | Product brief |
 
 ## Tech
 
@@ -21,4 +41,4 @@ City search uses the free [Open-Meteo Geocoding API](https://open-meteo.com/en/d
 
 ## Status
 
-Early prototype. The single HTML file will be split into separate files in the next phase.
+Measure mode works. Play mode (capitals game) is next.

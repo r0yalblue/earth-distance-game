@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Earth Distance</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="globe"></div>
+
+<!-- Start screen -->
+<section id="home" class="screen" hidden>
+  <div class="panel">
+    <h1 class="home-title">Earth Distance</h1>
+    <p class="home-tagline">How far apart are places on Earth?</p>
+    <a href="#measure" class="btn mode-btn"><strong>Measure</strong><span>Find the distance between two cities</span></a>
+    <a href="#play" class="btn mode-btn primary"><strong>Play</strong><span>Guess the distance between capitals</span></a>
+  </div>
+</section>
+
+<!-- Measure: search two cities -->
+<section id="measure" class="screen" hidden>
+  <div class="panel">
+    <a href="#" class="btn back">← Back</a>
+    <div class="field">
+      <input id="from" placeholder="From: city name" autocomplete="off">
+      <ul class="sugg" id="from-sugg" hidden></ul>
+    </div>
+    <div class="field">
+      <input id="to" placeholder="To: city name" autocomplete="off">
+      <ul class="sugg" id="to-sugg" hidden></ul>
+    </div>
+    <p class="msg measure-msg"></p>
+    <div class="card measure-result" hidden>
+      <p class="measure-dist"></p>
+      <p class="measure-sub"></p>
+      <button class="btn measure-reset">Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- Play: capitals game (Phase 3) -->
+<section id="play" class="screen" hidden>
+  <div class="panel">
+    <a href="#" class="btn back">← Back</a>
+    <div class="card">
+      <h2>Coming soon</h2>
+      <p>Guess the distance between two capital cities over three rounds.</p>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2.34.4/dist/globe.gl.min.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

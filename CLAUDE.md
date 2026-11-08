@@ -24,6 +24,8 @@
 
 ## Development environment
 - The web app is developed locally on Jeremy's Mac.
+- Serve it with `python3 -m http.server 8000 --bind 127.0.0.1` and open http://127.0.0.1:8000. Opening `index.html` from disk does not work (ES modules and WebGL textures are blocked on `file://`). Always bind to 127.0.0.1; Claude's auto mode blocks servers exposed to the network.
+- Work happens on a feature branch per phase, merged to `main` through a pull request that Jeremy reviews.
 - The Android phase moves to a Bitrise RDE, so Jeremy learns that workflow. This file and the product brief are committed so the context travels with the code.
 - The Android approach (Capacitor wrapper or native Kotlin rewrite) is undecided until the web app is live.
 
@@ -33,8 +35,8 @@
 - Use British English, dd/mm/yyyy dates and no em dashes.
 
 ## Roadmap
-1. Repository setup (README, `.gitignore`, this file, product brief).
-2. Restructure into separate files; add the Measure/Play mode picker; keep a copy of the globe textures in the repository.
+1. Repository setup (README, `.gitignore`, this file, product brief). Done.
+2. Restructure into separate files; add the Measure/Play mode picker; keep a copy of the globe textures in the repository. Done.
 3. Build Play mode (capitals, scoring, copy result).
 4. Unit tests for distance and scoring (Node built-in test runner); deploy to GitHub Pages.
 5. Android app and Google Play Store listing (in a Bitrise RDE).
